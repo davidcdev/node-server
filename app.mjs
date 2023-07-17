@@ -1,9 +1,9 @@
 import readlineSync from 'readline-sync';
 import chalk from 'chalk';
-import { loadTasks, addTask, deleteTask, completeTask, displayTasks } from './taskListFunctions.mjs';
+import { addTask, deleteTask, completeTask } from './taskListFunctions.mjs';
 
 function selectOptions() {
-    const actions = ['Add a New Task', 'Complete a Task', 'Delete a task',  'Show tasklist', 'Exit'];
+    const actions = ['Add a New Task', 'Complete a Task', 'Delete a task', 'Exit'];
     const index = readlineSync.keyInSelect(actions, 'What do you want to do?');
 
     switch (index) {
@@ -23,10 +23,6 @@ function selectOptions() {
             selectOptions();
             break;
         case 3:
-            displayTasks();
-            selectOptions();
-            break;
-        case 4:
             console.log(chalk.yellow('Exiting...'));
             break;
         default:
@@ -36,5 +32,4 @@ function selectOptions() {
     }
 }
 
-loadTasks();
 selectOptions();
